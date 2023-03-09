@@ -7,3 +7,5 @@ const Listbox = () => {
         </div>
     )
 }
+
+export default Listbox
