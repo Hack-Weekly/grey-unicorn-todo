@@ -2,6 +2,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+type TodoItem = {
+	id: number;
+	todo: string;
+
+}
 
 const TodoItem = () => {
 
@@ -9,11 +14,11 @@ const TodoItem = () => {
         // initialize state by accessing localStorage 
         // get item with key of 'list'
         // parse value we're grabbing
-      JSON.parse(localStorage.getItem('list')) 
+      JSON.parse(localStorage.getItem('list') || '') 
       || [])
     const [input, setInput] = useState('')
   
-    const addTodo = (todo) => {
+    const addTodo = (todo: string) => {
       const newTodo = {
         id: Math.random(),
         todo: todo,
@@ -31,14 +36,14 @@ const TodoItem = () => {
     }, [list])
 
   
-    const deleteTodo = (id) => {
+    const deleteTodo = (id:Number) => {
       // filter out the todo that has the id
-      setList(list.filter((todo) => todo.id !== id))
+      setList(list.filter((todo:TodoItem) => todo.id !== id))
     }
 
     return (
         <div>
-          <form action="">
+          <form onSubmit={(e)=>e.preventDefault()} action="">
           <input 
             type="text" 
             value= {input}
@@ -48,7 +53,7 @@ const TodoItem = () => {
             <button type="button" onClick={() => addTodo(input)}> Add </button>
           </form>
             <ul>
-                {list.map((todo) => (
+                {list.map((todo:TodoItem) => (
                     <li key={todo.id}>
                         {todo.todo}
                         <button
