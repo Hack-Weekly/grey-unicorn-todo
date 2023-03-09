@@ -1,0 +1,17 @@
+[
+	{
+		"Checked": false,
+		"Title": "Build a ToDo Application",
+		"Description": "Build the application which this content will be displayed in"
+	},
+	{
+		"Checked": true,
+		"Title": "Consume food for nutrition",
+		"Description": "Food is a neccessary fuel for human activity, I should consume it in order to complete tasks"
+	},
+	{
+		"Checked": false,
+		"Title": "Third Item",
+		"Description": "This is a third item, which will be listed third in the list"
+	}
+]
