@@ -24,7 +24,6 @@ const TodoItem = () => {
       setInput('')
     
     }
-
         //interact with localStorage every time the list array changes
     useEffect(() => {
         //update the 'list' key inside localStorage
@@ -42,10 +41,11 @@ const TodoItem = () => {
           <form action="">
           <input 
             type="text" 
-            value= {input} 
+            value= {input}
+            placeholder= "What do you need to do?" 
             onChange={e => setInput(e.target.value)}
           />
-            <button onClick={() => addTodo(input)}> Add </button>
+            <button type="button" onClick={() => addTodo(input)}> Add </button>
           </form>
             <ul>
                 {list.map((todo) => (

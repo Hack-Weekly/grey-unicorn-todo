@@ -67,3 +67,17 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+
+
+
+
+/* Footer */
+.attribution {
+  font-size: .6875em;
+}
+.attribution a {
+  color: #3e52a3;
+}

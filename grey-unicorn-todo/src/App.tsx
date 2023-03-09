@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Footer from './components/Footer'
 import TodoItem from './components/TodoItem'
 
 
@@ -10,7 +11,8 @@ function App() {
 
     <div>
       <h1>Todo</h1>
-      <TodoItem></TodoItem>
+      <TodoItem />
+      <Footer />
     </div>
 
   )
