@@ -9,4 +9,6 @@ need to address the typescript errors
 still need an edit function 
 the list items need check boxes instead of bullets
 
-
+instead of TodoItemContainer.tsx being a component how about
+it just becomes a className to manipulate for css
+for now will just add a section the component 

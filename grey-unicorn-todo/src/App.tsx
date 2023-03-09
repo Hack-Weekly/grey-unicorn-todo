@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import Footer from './components/Footer'
+import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
 
     <div>
-      <h1>Todo</h1>
+      <Header />
+      {/* <h1>Todo</h1> */}
       <TodoItem />
       <Footer />
     </div>
