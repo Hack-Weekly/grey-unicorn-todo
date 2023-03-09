@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const TodoItem = () => {
 
-    const [list, setList] = useState(
+    const [list, setList] = useState( () =>
         // initialize state by accessing localStorage 
         // get item with key of 'list'
         // parse value we're grabbing
@@ -39,9 +39,14 @@ const TodoItem = () => {
 
     return (
         <div>
-          <form action=""></form>
-            <input type="text" value= {input} onChange={e => setInput(e.target.value)}/>
+          <form action="">
+          <input 
+            type="text" 
+            value= {input} 
+            onChange={e => setInput(e.target.value)}
+          />
             <button onClick={() => addTodo(input)}> Add </button>
+          </form>
             <ul>
                 {list.map((todo) => (
                     <li key={todo.id}>
