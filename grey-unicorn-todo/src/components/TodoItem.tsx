@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 type TodoItem = {
-	id: number;
+	index: number;
 	todo: string;
 
 }
@@ -17,17 +17,27 @@ const TodoItem = () => {
       JSON.parse(localStorage.getItem('list') || '') 
       || [])
     const [input, setInput] = useState('')
-  
+    const [editId, setEditId] = useState(0)
     const addTodo = (todo: string) => {
-      const newTodo = {
-        id: Math.random(),
-        todo: todo,
+      if (todo !== ''){
+        const newTodo = {
+          index: Math.random(),
+          todo: todo,
+        }
+        setList([...list, newTodo])
+        // add new todo to the list
+        // clear input
+        setInput('')
       }
-      // add new todo to the list
-      setList([...list, newTodo])
-      // clear input
-      setInput('')
-    
+
+      if (editId) {
+        
+        const editTodo = list.find((todo:TodoItem) => todo.index === editId)
+        const updatedTodoList = list.map((todo:TodoItem) => {
+          todo.index === editId ? editTodo : todo})
+        setList(updatedTodoList)
+        setEditId(0)
+      }
     }
         //interact with localStorage every time the list array changes
     useEffect(() => {
@@ -36,10 +46,20 @@ const TodoItem = () => {
     }, [list])
 
   
-    const deleteTodo = (id:Number) => {
+    const deleteTodo = (index:Number) => {
       // filter out the todo that has the id
-      setList(list.filter((todo:TodoItem) => todo.id !== id))
+      setList(list.filter((todo:TodoItem) => todo.index !== index))
     }
+
+    const editTodo = (index:Number) => {
+      const editTodo = list.find((todo:TodoItem) => todo.index === index)
+      setInput(editTodo.todo);
+      setEditId(
+        editTodo.index
+      )
+    }
+
+
 
     return (
         <div>
@@ -54,11 +74,15 @@ const TodoItem = () => {
           </form>
             <ul>
                 {list.map((todo:TodoItem) => (
-                    <li key={todo.id}>
+                    <li key={todo.index}>
                         {todo.todo}
+                        {todo.index}
                         <button
-                            onClick={() => deleteTodo(todo.id)}
+                            onClick={() => deleteTodo(todo.index)}
                         > &times;</button>
+                        <button
+                            onClick={() => editTodo(todo.index)}
+                        > Edit </button>
                     </li>
                 ))}
             </ul>
