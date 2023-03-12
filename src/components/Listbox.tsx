@@ -1,10 +1,17 @@
-import React from "react";
+import TodoItem from "./TodoItem";
 
-const Listbox = () => {
+type TodoItem = {
+    id: number;
+    todo: string;
+}
+
+const Listbox = ({ list, deleteTodo }: any) => {
     return (
-        <div>
-            LISTBOX
-        </div>
+        <ul>
+            {list.map((todo: TodoItem) => (
+                <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+            ))}
+        </ul>
     )
 }
 
