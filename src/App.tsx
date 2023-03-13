@@ -4,6 +4,13 @@ import AddTodoForm from './components/AddTodoForm'
 import Listbox from './components/Listbox'
 import Footer from './components/Footer'
 
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline'
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 type TodoItem = {
   id: number;
   todo: string;
@@ -38,15 +45,33 @@ function App() {
     setList(list.filter((todo: TodoItem) => todo.id !== id))
   }
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    }
+  });
+
   return (
+    <ThemeProvider theme={theme}>
+      <Box sx={{
+        width: "100%",
+      }}>
+        <CssBaseline />
+        <Container maxWidth="sm" sx={{
+          py: 4,
+          minHeight: "100vh",
+        }}
+        >
 
-    <div>
-      <Header />
-      <AddTodoForm addTodo={addTodo} />
-      <Listbox list={list} deleteTodo={deleteTodo} />
-      <Footer />
-    </div>
+          <Header />
+          <AddTodoForm addTodo={addTodo} />
+          <Listbox list={list} deleteTodo={deleteTodo} />
 
+        </Container>
+        <Divider />
+        <Footer />
+      </Box>
+    </ThemeProvider>
   )
 }
 

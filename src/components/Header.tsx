@@ -1,10 +1,8 @@
-import React from "react";
+import Typography from '@mui/material/Typography';
 
 const Header = () => {
     return (
-        <div>
-            <h1>To Do:</h1>
-        </div>
+        <Typography variant="h2" align="center" gutterBottom>Todo</Typography>
     )
 }
 
