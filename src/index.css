@@ -69,7 +69,10 @@ button:focus-visible {
 }
 
 
-
+/* strike-through */
+.checked-item {
+  text-decoration: line-through;
+}
 
 
 
